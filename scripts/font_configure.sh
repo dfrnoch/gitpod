@@ -8,8 +8,3 @@ unzip fira-code.zip
 cp ttf/*.ttf ~/
 cd ..
 rm -rf fira-code
-
-# Install regular Fira font (OTF version)
-git clone https://github.com/mozilla/Fira.git --depth=1
-cp Fira/otf/*.otf ~/
-rm -rf Fira

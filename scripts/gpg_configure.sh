@@ -1,13 +1,16 @@
 #!/bin/bash
 
-# clear out the gpg stuff if it exists
 if [ -n "$GPG_KEY" ]; then
-    # get the key from $GPG_KEY and parse the key into a file, every space is a new line
-    echo "$GPG_KEY" | tr ' ' '\n' > ~/gpg_key.key
+    #hacky way to import the key
+    echo $GPG_KEY | sed -e 's/-----BEGIN PGP PRIVATE KEY BLOCK-----//g' -e 's/-----END PGP PRIVATE KEY BLOCK-----//g' | tr ' ' '\n' > gpg.key
+    echo "-----END PGP PRIVATE KEY BLOCK-----" >> gpg.key
+    sed -i '/^$/d' gpg.key
+    sed -i '1s/^/-----BEGIN PGP PRIVATE KEY BLOCK-----\n\n/' gpg.key
+    
     # import the key
-    gpg --import ~/gpg_key.key
+    gpg --batch --import ~/gpgy.key
     # delete the key file
-    rm -rf ~/gpg_key.key
+    rm -rf ~/gpg.key
     
     # Fix for invalid ioctl device error
     GPG_TTY=$(tty)
@@ -25,6 +28,4 @@ if [ -n "$GPG_KEY" ]; then
     git config --global user.signingkey "$GPG_KEY_ID"
     git config --global commit.gpgSign true
     
-    git config --global user.email "frnoch@pm.me"
-    git config --global user.email "lnxcz"
 fi
