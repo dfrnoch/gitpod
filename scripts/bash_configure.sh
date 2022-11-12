@@ -29,7 +29,6 @@ if [ -x "$(command -v zsh)" ]; then
         echo 'export PATH="$PNPM_HOME:$PATH"'
         
         echo 'export PATH="$HOME/.local/bin:$PATH"'
-        echo 'eval "$(starship init zsh)"'
         
         # bun completions
         echo([ -s "/home/gitpod/.bun/_bun" ] && source "/home/gitpod/.bun/_bun")
@@ -38,6 +37,10 @@ if [ -x "$(command -v zsh)" ]; then
         echo(export BUN_INSTALL="$HOME/.bun")
         echo(export PATH="$BUN_INSTALL/bin:$PATH")
         
+        echo 'eval "$(starship init zsh)"'
+        
     } >>~/.zshrc &&
     echo "Done!"
+    #set fish as default
+    sudo chsh gitpod -s "$(which zsh)"
 fi

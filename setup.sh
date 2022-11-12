@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo chsh gitpod -s "$(which zsh)"
 
 TMPDIR=$(mktemp -d)
 
@@ -11,7 +10,6 @@ cd $TMPDIR
 for script in ~/.dotfiles/scripts/*; do
     bash "$script"
 done
-
 
 cd $CURRENT
 
