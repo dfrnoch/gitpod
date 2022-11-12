@@ -2,13 +2,13 @@
 
 if [ -n "$GPG_KEY" ]; then
     #hacky way to import the key
-    echo $GPG_KEY | sed -e 's/-----BEGIN PGP PRIVATE KEY BLOCK-----//g' -e 's/-----END PGP PRIVATE KEY BLOCK-----//g' | tr ' ' '\n' > gpg.key
-    echo "-----END PGP PRIVATE KEY BLOCK-----" >> gpg.key
-    sed -i '/^$/d' gpg.key
-    sed -i '1s/^/-----BEGIN PGP PRIVATE KEY BLOCK-----\n\n/' gpg.key
+    echo $GPG_KEY | sed -e 's/-----BEGIN PGP PRIVATE KEY BLOCK-----//g' -e 's/-----END PGP PRIVATE KEY BLOCK-----//g' | tr ' ' '\n' > ~/gpg.key
+    echo "-----END PGP PRIVATE KEY BLOCK-----" >> ~/gpg.key
+    sed -i '/^$/d' ~/gpg.key
+    sed -i '1s/^/-----BEGIN PGP PRIVATE KEY BLOCK-----\n\n/' ~/gpg.key
     
     # import the key
-    gpg --batch --import ~/gpgy.key
+    gpg --batch --import ~/gpg.key
     # delete the key file
     rm -rf ~/gpg.key
     
