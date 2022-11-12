@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo chsh gitpod -s "$(which zsh)"
+
 TMPDIR=$(mktemp -d)
 
 CURRENT=$PWD
@@ -14,3 +16,5 @@ done
 cd $CURRENT
 
 rm -rf $TMPDIR
+
+exec /usr/bin/zsh

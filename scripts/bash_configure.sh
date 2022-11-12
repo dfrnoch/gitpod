@@ -11,8 +11,6 @@ if [ -x "$(command -v zsh)" ]; then
     
     echo "Configuring zsh..." &&
     {
-        echo 'eval "$(starship init zsh)"'
-        
         echo "export SHELL=$(which zsh)"
         
         echo 'source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh'
@@ -29,6 +27,17 @@ if [ -x "$(command -v zsh)" ]; then
         
         echo 'export PNPM_HOME="$HOME/.local/share/pnpm"'
         echo 'export PATH="$PNPM_HOME:$PATH"'
+        
+        echo 'export PATH="$HOME/.local/bin:$PATH"'
+        echo 'eval "$(starship init zsh)"'
+        
+        # bun completions
+        echo([ -s "/home/gitpod/.bun/_bun" ] && source "/home/gitpod/.bun/_bun")
+        
+        # bun
+        echo(export BUN_INSTALL="$HOME/.bun")
+        echo(export PATH="$BUN_INSTALL/bin:$PATH")
+        
     } >>~/.zshrc &&
     echo "Done!"
 fi
