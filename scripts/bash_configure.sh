@@ -31,16 +31,16 @@ if [ -x "$(command -v zsh)" ]; then
         echo 'export PATH="$HOME/.local/bin:$PATH"'
         
         # bun completions
-        echo([ -s "/home/gitpod/.bun/_bun" ] && source "/home/gitpod/.bun/_bun")
+        echo '[ -s "/home/gitpod/.bun/_bun" ] && source "/home/gitpod/.bun/_bun"'
         
         # bun
-        echo(export BUN_INSTALL="$HOME/.bun")
-        echo(export PATH="$BUN_INSTALL/bin:$PATH")
+        echo 'export BUN_INSTALL="$HOME/.bun"'
+        echo 'export PATH="$BUN_INSTALL/bin:$PATH"'
         
         echo 'eval "$(starship init zsh)"'
         
     } >>~/.zshrc &&
     echo "Done!"
-    #set fish as default
+    #set zsh as default
     sudo chsh gitpod -s "$(which zsh)"
 fi
