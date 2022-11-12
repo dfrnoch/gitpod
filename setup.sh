@@ -10,8 +10,6 @@ for script in ~/.dotfiles/scripts/*; do
     bash "$script"
 done
 
-# init starship
-echo "eval \"\$(starship init bash)\"" >> ~/.bashrc
 
 cd $CURRENT
 
