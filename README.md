@@ -1,41 +1,27 @@
-# Bring your Dotfiles to Gitpod
+# Gitpod workspace as an everyday workflow
+Theese dotfiles are meant to make gitpod.io feel as your primary coding environment. The setup is highly opinionated and based on my own workflow and preferences.
 
-Ever wondered how you can bring your personal dotfiles configurations to [Gitpod](https://www.gitpod.io/) to have your personalized ephemeral developer environments in the cloud? Here's how...
+The main features are:
 
-## How Does this Repo. Works?
+- zsh with autosomplete and syntax highlighting using [starship.rs](https://starship.rs/) as the default theme
+- configured gpg commit signing
+- [bun](https://github.com/oven-sh/bun) preinstalled for managing node packages
+- [commitizen](https://github.com/commitizen/cz-cli) for conventional commit messages
+- [Fira Code](https://github.com/tonsky/FiraCode) fonts
 
-- It has a `./setup.sh` file that contains the initial setup script to execute all the scripts to install/ configure required services under `./scripts/` to keep that X service installed on your next Gitpod Workspaces. For example, it contains following scripts:
-  - `./scripts/gpg_configure.sh` is script to configure [GPG](https://www.gnupg.org/) key.
-  - `./scripts/terraform_configure.sh` is script to setup & configure [Terraform](https://www.terraform.io/).
-  - `./scripts/aws_cli_install.sh` to install [AWS CLI](https://aws.amazon.com/cli/).
-  - `./scripts/deno_configure.sh` to install & configure [deno](https://deno.land/).
-  - `./scripts/gcloud_cli_install.sh` to install [Google Cloud CLI](https://cloud.google.com/sdk/docs/install-sdk).
+## Prerequisites
 
-## How You Can Quickly Use this dotfiles with your Gitpod Workspaces (as template)
+In order to be able to sign commits, you need to set the following environment variables:
 
-- You Can generate a repo. for you by [using this template](https://github.com/gitpod-io/demo-dotfiles/generate)
-- Name your Repo. (e.g.: `dotfiles`).
-- Add your `dotfiles` repository to [Gitpod Dashboard Preferences](https://gitpod.io/preferences)
-- Now, everytime you will start a new workspace or just Restart your Gitpod Workspace, you will get your lovely dotfiles customisation setup.
+- `$GPG_KEY` - your **PRIVATE** GPG key, used for signing commits
+- `$GPG_KEY_ID` - the long ID of your GPG key
 
-> **Note**: Your installation script will be terminated if it exceeds 120 seconds.
+## Using the dotfiles
 
+1. Fork this repository (if you want to make changes),
+2. Go to **Gitpod Settings** > [**Preferences**](https://gitpod.io/preferences) and set your forked repository as the custom dotfiles repository
 
+That's it! Your next gitpod.io workspace will use the custom dotfiles.
 
-## Modify it according to your personal requirements
-
-To modify it out in a new development environment, click the button below:
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/gitpod-io/demo-dotfiles)
-
-## Recommended Reading
-
-- [Blog: Personalize your Gitpod Workspace Environments](https://www.gitpod.io/blog/personalize-your-gitpod-workspace-environment)
-- [Docs: Config-dotfiles](https://www.gitpod.io/docs/config-dotfiles)
-
-## Examples
-
-Here are some example `dotfiles` which you can refer:
-
-- [webpro/awesome-dotfiles](https://github.com/webpro/awesome-dotfiles)
-- [holman/dotfiles](https://github.com/holman/dotfiles)
+## Credits
+https://github.com/gitpod-io/demo-dotfiles
